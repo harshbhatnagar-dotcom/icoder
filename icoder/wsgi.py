@@ -16,6 +16,6 @@ static_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'staticfil
 if not os.path.exists(static_dir) or not os.listdir(static_dir):
     subprocess.call(['python', 'manage.py', 'collectstatic', '--noinput'])
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'yourproject.settings')  # update this to your actual project name
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'icoder.settings')  # update this to your actual project name
 
 application = get_wsgi_application()
