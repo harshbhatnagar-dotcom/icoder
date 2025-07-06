@@ -3,5 +3,5 @@ gunicorn
 whitenoise
 psycopg2-binary
 Pillow
-jazzmin
-ckeditor
+git+https://github.com/farridav/django-jazzmin.git
+django-ckeditor
