@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %} bloghome {% endblock %}
+
+{% block blogactive %} active {% endblock %}
+
+{% block content %}
+<div class="container2 my-4 ">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-6 my-3">
+            <h1>Coding Articles by ICoder</h1>
+
+            <div class="container my-5">
+                {% for post in allposts %}
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <span class="text-primary fw-semibold">Article by {{ post.author }}</span>
+                            <small class="text-muted">{{ post.timestamp }}</small>
+                        </div>
+
+                        <h4 class="card-title mt-2">
+                            <a class="text-dark text-decoration-none" href="/blog/{{post.slug}}">
+                                {{ post.title }}
+                            </a>
+                        </h4>
+
+                       
+
+                        <p class="card-text">
+                            {{ post.content|truncatechars:500|safe }}
+                        </p>
+
+                        <div class="text-end">
+                            <a href="/blog/{{post.slug}}" class="btn btn-outline-primary">
+                                Continue reading →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="alert alert-info">No posts available.</div>
+                {% endfor %}
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

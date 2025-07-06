@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %} Search Results {% endblock %}
+
+{% block blogactive %} active {% endblock %}
+
+{% block content %}
+<div class="container2 my-4 ">
+    
+    <div class="row justify-content-center">
+        
+        <div class="col-md-6 my-3">
+            <h1>Search Results:</h1>
+
+            {% for post in allposts %}
+            <div class="border rounded overflow-hidden shadow-sm position-relative p-4 bg-white my-3 ">
+                <strong class="d-inline-block mb-2 text-primary-emphasis">Article By {{post.author}}</strong>
+                <h3 class="mb-0">{{post.title}}</h3>
+                <div class="mb-1 text-body-secondary">{{post.timestamp}}</div>
+                <p class="card-text mb-auto">{{post.content| truncatechars:200}}</p>
+                <a href="/blog/{{post.slug}}" class="btn btn-primary my-4">Continue reading</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% if not allposts %}
+<div class="container text-center my-5">
+
+    <h2>No results found for your search - {{query}}.</h2>
+    <p>Please try a different search term.</p>
+</div>
+{% endif %}
+
+{% endblock %}
