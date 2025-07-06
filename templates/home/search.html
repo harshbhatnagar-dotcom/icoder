@@ -17,7 +17,7 @@
                 <strong class="d-inline-block mb-2 text-primary-emphasis">Article By {{post.author}}</strong>
                 <h3 class="mb-0">{{post.title}}</h3>
                 <div class="mb-1 text-body-secondary">{{post.timestamp}}</div>
-                <p class="card-text mb-auto">{{post.content| truncatechars:200}}</p>
+                <p class="card-text mb-auto">{{post.content| truncatechars:200 | safe}}</p>
                 <a href="/blog/{{post.slug}}" class="btn btn-primary my-4">Continue reading</a>
             </div>
             {% endfor %}
