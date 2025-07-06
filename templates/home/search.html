@@ -12,25 +12,44 @@
     </div>
 
     {% if allposts %}
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                {% for post in allposts %}
-                <div class="border rounded shadow-sm p-4 bg-white my-4">
-                    <strong class="d-inline-block mb-2 text-primary">Article By {{ post.author }}</strong>
-                    <h3 class="mb-2">{{ post.title }}</h3>
-                    <div class="mb-2 text-muted small">{{ post.timestamp }}</div>
-                    <p class="mb-3">{{ post.content|truncatechars:200|safe }}</p>
-                    <a href="/blog/{{ post.slug }}" class="btn btn-outline-primary">Continue Reading</a>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            {% for post in allposts %}
+            <div class="card shadow-sm mb-4">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <span class="text-primary fw-semibold">Article by {{ post.author }}</span>
+                        <small class="text-muted">{{ post.timestamp }}</small>
+                    </div>
+
+                    <h4 class="card-title mt-2">
+                        <a class="text-dark text-decoration-none" href="/blog/{{post.slug}}">
+                            {{ post.title }}
+                        </a>
+                    </h4>
+
+
+
+                    <p class="card-text">
+                        {{ post.content|truncatechars:500|safe }}
+                    </p>
+
+                    <div class="text-end">
+                        <a href="/blog/{{post.slug}}" class="btn btn-outline-primary">
+                            Continue reading →
+                        </a>
+                    </div>
                 </div>
-                {% endfor %}
             </div>
+            {% endfor %}
         </div>
+    </div>
     {% else %}
-        <div class="text-center mt-5">
-            <h3 class="text-danger">No results found for "{{ query }}".</h3>
-            <p class="text-muted">Try using more general or different keywords.</p>
-            <a href="/" class="btn btn-secondary mt-3">Back to Home</a>
-        </div>
+    <div class="text-center mt-5">
+        <h3 class="text-danger">No results found for "{{ query }}".</h3>
+        <p class="text-muted">Try using more general or different keywords.</p>
+        <a href="/" class="btn btn-secondary mt-3">Back to Home</a>
+    </div>
     {% endif %}
 </div>
 {% endblock %}
