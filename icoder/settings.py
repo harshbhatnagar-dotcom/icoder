@@ -14,7 +14,10 @@ from pathlib import Path
 import os
 import dj_database_url
 
-SECRET_KEY = 'oaris46jlqw_ssy8x0j3k(&+p6zs8wx5g)7r8*m$+c0peq$ghz'
+SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
+
+
+
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
