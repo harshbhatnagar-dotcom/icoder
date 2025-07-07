@@ -12,6 +12,11 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 import os
+import dj_database_url
+
+SECRET_KEY = 'oaris46jlqw_ssy8x0j3k(&+p6zs8wx5g)7r8*m$+c0peq$ghz'
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -81,11 +86,13 @@ WSGI_APPLICATION = 'icoder.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(
+        default=os.getenv("DATABASE_URL"),  # Render will provide this as an env var
+        conn_max_age=600,
+        ssl_require=True,
+    )
 }
+
 
 
 # Password validation

@@ -1,7 +1,16 @@
 Django>=4.2,<5.0
-gunicorn
-whitenoise
-psycopg2-binary
-Pillow
+gunicorn                          # WSGI server for production
+whitenoise                        # For serving static files
+psycopg2-binary                   # PostgreSQL database driver
+Pillow                            # Image handling (needed by CKEditor)
+
+# Admin UI theme
 git+https://github.com/farridav/django-jazzmin.git
+
+# Rich text editor
 django-ckeditor
+
+# Add these:
+dj-database-url                   # For parsing DATABASE_URL from Render
+python-dotenv                    # Optional: for local `.env` development
+
