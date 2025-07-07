@@ -14,7 +14,7 @@ from pathlib import Path
 import os
 import dj_database_url
 
-SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
+
 
 
 
@@ -33,7 +33,7 @@ SECRET_KEY = 'django-insecure-=j*fs#k2jrzl^o4_rfyb6k@7nuguv50xvpm0ecf0k+qohfp2^w
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['icoder-iq05.onrender.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -89,11 +89,10 @@ WSGI_APPLICATION = 'icoder.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default=os.getenv("DATABASE_URL"),  # Render will provide this as an env var
-        conn_max_age=600,
-        ssl_require=True,
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
 
 
